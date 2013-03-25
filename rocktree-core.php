@@ -4,8 +4,8 @@
 /* Create Plugin Core
 -------------------------------------------------------------------------------- */
 // checks to see if plugin core exists; creates it if it doesn't exist.
-register_activation_hook( __FILE__, 'load_rocktree_core' );
-function load_rocktree_core() {
+register_activation_hook( __FILE__, 'talc_load_rocktree_core' );
+function talc_load_rocktree_core() { // IMPORTANT ::: THIS NEEDS TO HAVE PLUGIN PREFIX IN FUNCTION NAME
 	$core = dirname(__FILE__);	
 	$new_core_dir = dirname(dirname(__FILE__)) . '/rocktree-core';	
 	if( !is_dir($new_core_dir) ) {		

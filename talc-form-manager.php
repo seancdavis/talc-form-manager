@@ -1,18 +1,19 @@
 <?php
 /*
-Plugin Name: Moon Rock Contact Form
-Plugin URI:
-Description: A simple contact form for your website. It saves all correspondence in the WP database, while also inclding the option for email notifications. 
-Version: 0.2
+Plugin Name: Talc Form Manager
+Plugin URI: http://wp-themes.rocktreedesign.com/talc-form-manager
+Description: A plugin to help you create custom and powerful forms for your website. Currently, for testing purposes, users are not creating, but instead choosing fields. 
+Version: 0.1
 Author: rocktree Design
 Author URI: http://rocktreedesign.com
-License: ???
 */
 
 /* Load Files
 -------------------------------------------------------------------------------- */
 require_once( dirname(__FILE__) . '/rocktree-core.php' ); // REQUIRED!!! installs rocktree-core files if necessary
-require_once(dirname(__FILE__) . '/widgets.php'); // custom widgets
+
+// not sure I want a widget
+//require_once(dirname(__FILE__) . '/widgets.php'); // custom widgets
 
 /* The Values Array
 -------------------------------------------------------------------------------- */
@@ -59,28 +60,28 @@ $gs_args = array(
 	
 );
 
-$args = array(
-	'name' => 'Contact Form',
-	'prefix' => 'mrcf',
-	'dir' => 'moon-rock-contact-form',
-	'shortcode' => 'mrcf',
+$rock_args = array(
+	'name' => 'My Forms',
+	'prefix' => 'talc',
+	'dir' => 'talc-form-manager',
+	'shortcode' => 'talc',
 	'shortcode_dir' => dirname(__FILE__) . '/shortcode.php',
-	'post_type' => 'rt_mrcf',
-	'item' => 'Message',
-	'description'   => 'Enables you to build and display a contact form, and saves all entries on your site',
+	'post_type' => 'rt_talc',
+	'item' => 'Submission',
+	'description'   => 'Enables you to build forms for your users to fill out, with custom associated settings.',
 	'menu_position' => 25,
-	'script_dir' => plugins_url() . '/moon-rock-contact-form/scripts.js', 
-	'style_dir' => plugins_url() . '/moon-rock-contact-form/style.css',
+	'script_dir' => plugins_url() . '/talc-form-manager/scripts.js', 
+	'style_dir' => plugins_url() . '/talc-form-manager/style.css',
 	'dynamic_style_dir' => dirname(__FILE__) . '/custom-style.php',
 );
 
 if( is_dir( dirname(dirname(__FILE__)) . '/rocktree-core/rocktree-core' ) ) {
-	$mrcf_gs = new GiftShop($gs_args, $gs_vals);
-	$moon_rock = new Rock($args);
+	//$talc_options = new GiftShop($gs_args, $gs_vals);
+	$talc = new Rock($rock_args);
 	$MyUpdateChecker = new PluginUpdateChecker(
-	    'http://wp-themes.rocktreedesign.com/moon-rock-contact-form/update.json',
+	    'http://wp-plugins.rocktreedesign.com/talc-form-manager/update.json',
 	    __FILE__,
-	    'moon-rock-contact-form',
+	    'talc-form-manager',
 	    1
 	);
 }
